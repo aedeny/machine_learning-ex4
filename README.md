@@ -9,7 +9,7 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 * **Hidden layer(s):** One layer of 100 neurons.
 * **Number of epochs:** 10.
 * **Learning rate:** 0.01.
-* **Activation function:** LeakyReLU.
+* **Activation function:** ReLU.
 * **Optimizer:** AdaGrad
 * **Dropout:** 0.1, 0.2, 0.25
 * **Convolution:** Conv2d (1 * 10, 10 * 20) with kernel of size 5.
