@@ -12,7 +12,7 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 * **Activation function:** LeakyReLU.
 * **Optimizer:** AdaGrad
 * **Dropout:** 0.1, 0.2, 0.25
-* **Convolution:** Conv2d (1 * 10, 10 * 20) with kernal size of 5)
+* **Convolution:** Conv2d (1 * 10, 10 * 20) with kernel of size 5.
 
 ### Results
 
