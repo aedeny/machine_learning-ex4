@@ -7,70 +7,73 @@ from torch.utils.data.dataset import Dataset
 from torchvision import datasets
 
 
-class NeuralNetwork(nn.Module):
-    def __init__(self, image_size, h1_size, h2_size, mnist_out_size, batch=False, dropout=False, convolution=False):
-        super(NeuralNetwork, self).__init__()
+class BasicNeuralNetwork(nn.Module):
+    def __init__(self, image_size, hidden_layer1_size, hidden_layer2_size, mnist_output_size):
+        super(BasicNeuralNetwork, self).__init__()
         self.image_size = image_size
-        self.h1_size = h1_size
-        self.h2_size = h2_size
-        self.mnist_out_size = mnist_out_size
-        self.batch = batch
-        self.dropout = dropout
-        self.convolution = convolution
-
-        if convolution:
-            self.convolution1 = nn.Conv2d(1, 10, kernel_size=5)
-            self.convolution2 = nn.Conv2d(10, 20, kernel_size=5)
-
-            if dropout:
-                self.convolution2_dropout = nn.Dropout2d()
-
-            self.fc0 = nn.Linear(320, self.h1_size)
-        else:
-            self.fc0 = nn.Linear(self.image_size, self.h1_size)
-
-        if batch:
-            self.fc0_bn = nn.BatchNorm1d(self.h1_size)
-        self.fc1 = nn.Linear(self.h1_size, self.h2_size)
-
-        if batch:
-            self.fc1_bn = nn.BatchNorm1d(self.h2_size)
-        self.fc2 = nn.Linear(self.h2_size, self.mnist_out_size)
-
-        if batch:
-            self.fc2_bn = nn.BatchNorm1d(self.mnist_out_size)
+        self.fc0 = nn.Linear(image_size, hidden_layer1_size)
+        self.fc1 = nn.Linear(hidden_layer1_size, hidden_layer2_size)
+        self.fc2 = nn.Linear(hidden_layer2_size, mnist_output_size)
 
     def forward(self, x):
-        if self.convolution:
-            x = f.relu(f.max_pool2d(self.convolution1(x), 2))
-            x = f.relu(f.max_pool2d(self.convolution2_dropout(self.convolution2(x)), 2))
+        x = x.view(-1, self.image_size)
+        x = f.relu(self.fc0(x))
+        x = f.relu(self.fc1(x))
+        x = f.relu(self.fc2(x))
+        return f.log_softmax(x, dim=1)
 
-        if self.convolution:
-            x = x.view(-1, 320)
-        else:
-            x = x.view(-1, self.image_size)
 
-        x = f.relu(self.fc0_bn(self.fc0(x)))
-        x = f.relu(self.fc1_bn(self.fc1(x)))
+class DropoutNeuralNetwork(nn.Module):
+    def __init__(self, image_size, hidden_layer1_size, hidden_layer2_size, mnist_output_size):
+        super(DropoutNeuralNetwork, self).__init__()
+        self.image_size = image_size
+        self.fc0 = nn.Linear(image_size, hidden_layer1_size)
+        self.fc1 = nn.Linear(hidden_layer1_size, hidden_layer2_size)
+        self.fc2 = nn.Linear(hidden_layer2_size, mnist_output_size)
 
-        if self.dropout:
-            x = f.dropout(x, 0.2, self.training)
-        x = f.relu(self.fc2_bn(self.fc2(x)))
-
-        if self.dropout:
-            x = f.dropout(x, 0.2, self.training)
+    def forward(self, x):
+        x = x.view(-1, self.image_size)
+        x = f.relu(self.fc0(x))
+        x = f.relu(self.fc1(x))
+        x = f.dropout(x, 0.5)
+        x = f.relu(self.fc2(x))
+        x = f.dropout(x, 0.5)
 
         return f.log_softmax(x, dim=1)
 
 
-def train(epoch, model):
+class BatchNormalizationNeuralNetwork(nn.Module):
+    def __init__(self, image_size, hidden_layer1_size, hidden_layer2_size, mnist_output_size):
+        super(BatchNormalizationNeuralNetwork, self).__init__()
+        self.image_size = image_size
+        self.fc0 = nn.Linear(image_size, hidden_layer1_size)
+        self.fc0_bn = nn.BatchNorm1d(hidden_layer1_size)
+        self.fc1 = nn.Linear(hidden_layer1_size, hidden_layer2_size)
+        self.fc1_bn = nn.BatchNorm1d(hidden_layer2_size)
+        self.fc2 = nn.Linear(hidden_layer2_size, mnist_output_size)
+        self.fc2_bn = nn.BatchNorm1d(mnist_output_size)
+
+    def forward(self, x):
+        x = x.view(-1, self.image_size)
+        x = f.relu(self.fc0_bn(self.fc0(x)))
+        x = f.relu(self.fc1_bn(self.fc1(x)))
+        x = f.relu(self.fc2_bn(self.fc2(x)))
+        return f.log_softmax(x, dim=1)
+
+
+def train(model):
     model.train()
+    train_loss = 0
+    correct_train = 0
     for batch_idx, (data, labels) in enumerate(train_loader):
         optimizer.zero_grad()
         output = model(data)
         loss = f.nll_loss(output, labels)
+        train_loss += loss.item()
         loss.backward()
         optimizer.step()
+        prediction = output.data.max(1, keepdim=True)[1]
+        correct_train += prediction.eq(labels.data.view_as(prediction)).cpu().sum()
 
 
 def test():
@@ -111,5 +114,5 @@ if __name__ == '__main__':
     optimizer = optim.SGD(model.parameters(), lr=0.01)
 
     for epoch in range(1, 10 + 1):
-        train(epoch, model)
+        train(model)
         test()
