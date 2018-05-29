@@ -1,9 +1,10 @@
 # Machine Learning - Exercise 4
+
 A PyTorch implementation of a Neural Network which classifies an image to one of 10 clothing classes (Fashion MNIST).
 
 ## Explanation
 
-### Parameters:
+### Parameters
 
 * **Hidden layer(s):** One layer of 100 neurons.
 * **Number of epochs:** 10.
@@ -13,7 +14,8 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 * **Dropout:** 0.1, 0.2, 0.25
 * **Convolution:** Conv2d (1 * 10, 10 * 20) with kernal size of 5)
 
-### Results:
+### Results
+
 * **Training set accuracy:** 68.594%
 * **Validation set accuracy:** 89.254%
 * **Testing set accuracy:** 89.090%
@@ -21,10 +23,12 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 * **Average validation set loss:** 0.466
 * **Average loss sum:** 0.918
 
+### Graph
+
+Training Loss vs. Validation Loss
+
+
 ![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/Training_Loss_vs._Validation_Loss.png?raw=true)
-
-
-I've chosen these parameters after experimenting with different parameters and found these to be the best.
 
 ## Example Output  
 Note: Output can vary from each training.
