@@ -31,7 +31,7 @@ Training Loss vs. Validation Loss
 ![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/Training_Loss_vs._Validation_Loss.png?raw=true)
 
 ## Example Output  
-Note: Output can vary from each training.
+**Note:** Output can vary from each training.
 ```
 Training Epoch: 0	Accuracy 29176/48000 (60.783%)	Average Loss: 1.264
 Validation Epoch: 0	Accuracy: 10103/12032 (83.968%)	Average Loss: 0.786
