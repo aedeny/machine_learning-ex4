@@ -21,7 +21,7 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 * **Average validation set loss:** 0.466
 * **Average loss sum:** 0.918
 
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/Training_Loss_vs._Validation_Loss.png?raw=true)
 
 
 I've chosen these parameters after experimenting with different parameters and found these to be the best.
