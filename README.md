@@ -6,7 +6,7 @@ Following are five neural network models.
 
 
 ## 1. Basic NN
-***
+
 ### Parameters
 
 * **Hidden layer(s):** Two hidden layers in sizes of 100 and 50.
@@ -24,7 +24,7 @@ Following are five neural network models.
 * **Average validation set loss:** 0.311
 * **Average testing loss sum:** 0.339
 
-![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/Training_Loss_vs._Validation_Loss_Basic.png?raw=true)
+![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/graphs/Training_Loss_vs._Validation_Loss_Basic.png?raw=true)
 
 ## 2. NN With Dropout
 
@@ -45,7 +45,7 @@ Following are five neural network models.
 * **Average training set loss:** 0.913
 * **Average validation set loss:** 0.445
 * **Average testing loss sum:** 0.486
-![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/Training_Loss_vs._Validation_Loss_Dropout.png?raw=true)
+![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/graphs/Training_Loss_vs._Validation_Loss_Dropout.png?raw=true)
 
 
 ## 3. NN With Batch Normalization
@@ -58,6 +58,7 @@ Following are five neural network models.
 * **Activation function:** ReLU.
 * **Optimizer:** AdaGrad
 * **Batch Normalization:** 
+
 ### Results
 
 * **Training set accuracy:** 91.071%
@@ -67,7 +68,7 @@ Following are five neural network models.
 * **Average validation set loss:** 0.390
 * **Average testing loss sum:** 0.420
 
-![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/Training_Loss_vs._Validation_Loss_Batch_Normalization.png?raw=true)
+![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/graphs/Training_Loss_vs._Validation_Loss_Batch_Normalization.png?raw=true)
 
 ## 4. NN With Convolution
 
@@ -88,7 +89,7 @@ Following are five neural network models.
 * **Average training set loss:** 0.287
 * **Average validation set loss:** 0.312
 * **Average testing loss sum:** 0.325
-![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/Training_Loss_vs._Validation_Loss_Convolution.png?raw=true)
+![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/graphs/Training_Loss_vs._Validation_Loss_Convolution.png?raw=true)
 
 
 ## 5. Combined NN
@@ -112,4 +113,4 @@ Following are five neural network models.
 * **Average validation set loss:** 0.466
 * **Average loss sum:** 0.918
 
-![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/Training_Loss_vs._Validation_Loss_Combined.png?raw=true)
+![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/graphs/Training_Loss_vs._Validation_Loss_Combined.png?raw=true)
