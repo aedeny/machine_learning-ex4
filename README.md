@@ -2,11 +2,12 @@
 
 A PyTorch implementation of a Neural Network which classifies an image to one of 10 clothing classes (Fashion MNIST).
 
-## Models
+Following are five neural network models.
 
-### Basic Neural Network
+
+## 1. Basic NN
 ***
-#### Parameters
+### Parameters
 
 * **Hidden layer(s):** Two hidden layers in sizes of 100 and 50.
 * **Number of epochs:** 10.
@@ -14,7 +15,7 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 * **Activation function:** ReLU.
 * **Optimizer:** AdaGrad
 
-#### Results
+### Results
 
 * **Training set accuracy:** 90.252%
 * **Validation set accuracy:** 88.098%
@@ -25,9 +26,9 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 
 ![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/Training_Loss_vs._Validation_Loss_Basic.png?raw=true)
 
-### Neural Network With Dropout
-***
-#### Parameters
+## 2. NN With Dropout
+
+### Parameters
 
 * **Hidden layer(s):** Two hidden layers in sizes of 100 and 50.
 * **Number of epochs:** 10.
@@ -36,7 +37,7 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 * **Optimizer:** AdaGrad
 * **Dropout:** 0.1, 0.2, 0.25
 
-#### Results
+### Results
 
 * **Training set accuracy:** 68.452%
 * **Validation set accuracy:** 88.040%
@@ -47,9 +48,9 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 ![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/Training_Loss_vs._Validation_Loss_Dropout.png?raw=true)
 
 
-### Neural Network With Batch Normalization
-***
-#### Parameters
+## 3. NN With Batch Normalization
+
+### Parameters
 
 * **Hidden layer(s):** Two hidden layers in sizes of 100 and 50.
 * **Number of epochs:** 10.
@@ -57,7 +58,7 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 * **Activation function:** ReLU.
 * **Optimizer:** AdaGrad
 * **Batch Normalization:** 
-#### Results
+### Results
 
 * **Training set accuracy:** 91.071%
 * **Validation set accuracy:** 89.021%
@@ -68,9 +69,9 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 
 ![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/Training_Loss_vs._Validation_Loss_Batch_Normalization.png?raw=true)
 
-### Neural Network With Convolution
-***
-#### Parameters
+## 4. NN With Convolution
+
+### Parameters
 
 * **Hidden layer(s):** Two hidden layers in sizes of 100 and 50.
 * **Number of epochs:** 10.
@@ -79,7 +80,7 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 * **Optimizer:** AdaGrad
 * **Convolution:** Conv2d (1 * 10, 10 * 20) with kernel of size 5.
 
-#### Results
+### Results
 
 * **Training set accuracy:** 89.577%
 * **Validation set accuracy:** 88.215%
@@ -90,10 +91,9 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 ![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/Training_Loss_vs._Validation_Loss_Convolution.png?raw=true)
 
 
-### Combined Neural Network
-___
+## 5. Combined NN
 
-#### Parameters
+### Parameters
 
 * **Hidden layer(s):** Two hidden layers in sizes of 100 and 50.
 * **Number of epochs:** 10.
@@ -103,7 +103,7 @@ ___
 * **Dropout:** 0.1, 0.2, 0.25
 * **Convolution:** Conv2d (1 * 10, 10 * 20) with kernel of size 5.
 
-#### Results
+### Results
 
 * **Training set accuracy:** 68.594%
 * **Validation set accuracy:** 89.254%
