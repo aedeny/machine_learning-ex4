@@ -38,10 +38,11 @@ class DropoutNeuralNetwork(nn.Module):
     def forward(self, x):
         x = x.view(-1, self.image_size)
         x = f.relu(self.fc0(x))
+        x = f.dropout(x, 0.1, self.training)
         x = f.relu(self.fc1(x))
         x = f.dropout(x, 0.2, self.training)
         x = f.relu(self.fc2(x))
-        x = f.dropout(x, 0.2, self.training)
+        x = f.dropout(x, 0.25, self.training)
 
         return f.log_softmax(x, dim=1)
 
@@ -63,6 +64,28 @@ class BatchNormalizationNeuralNetwork(nn.Module):
         x = f.relu(self.fc0_bn(self.fc0(x)))
         x = f.relu(self.fc1_bn(self.fc1(x)))
         x = f.relu(self.fc2_bn(self.fc2(x)))
+        return f.log_softmax(x, dim=1)
+
+
+class ConvolutionNeuralNetwork(nn.Module):
+    def __init__(self, image_size, hidden_layer1_size, hidden_layer2_size, mnist_output_size):
+        super(ConvolutionNeuralNetwork, self).__init__()
+        self.image_size = image_size
+        self.convolution1 = nn.Conv2d(1, 10, kernel_size=5)
+        self.convolution2 = nn.Conv2d(10, 20, kernel_size=5)
+
+        self.fc0 = nn.Linear(320, hidden_layer1_size)
+        self.fc1 = nn.Linear(hidden_layer1_size, hidden_layer2_size)
+        self.fc2 = nn.Linear(hidden_layer2_size, mnist_output_size)
+
+    def forward(self, x):
+        x = f.relu(f.max_pool2d(self.convolution1(x), 2))
+        x = f.relu(f.max_pool2d(self.convolution2(x), 2))
+
+        x = x.view(-1, 320)
+        x = f.relu(self.fc0(x))
+        x = f.relu(self.fc1(x))
+        x = f.relu(self.fc2(x))
         return f.log_softmax(x, dim=1)
 
 
@@ -194,7 +217,7 @@ def draw_loss(x, train_y, valid_y):
     fig = plt.figure(0)
     fig.canvas.set_window_title('Training Loss vs. Validation Loss')
 
-    plt.axis([0, 11, 0, 2])
+    plt.axis([0, 11, 0.25, 1.75])
     plt.xlabel('Epoch')
     plt.ylabel('Loss')
 
@@ -226,7 +249,7 @@ def main():
     learning_rate = 0.01
 
     train_loader, validation_loader, test_loader = get_data_loaders(batch_size, 0.2)
-    model = CombinedNeuralNetwork(mnist_image_size, hidden1_size, hidden2_size, mnist_output_size)
+    model = BatchNormalizationNeuralNetwork(mnist_image_size, hidden1_size, hidden2_size, mnist_output_size)
     optimizer = optim.Adagrad(model.parameters(), lr=learning_rate)
 
     x = list()
