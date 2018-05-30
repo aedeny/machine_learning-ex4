@@ -91,7 +91,7 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 
 
 ### Combined Neural Network
-***
+___
 
 #### Parameters
 
