@@ -5,7 +5,7 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 ## Models
 
 ### Basic Neural Network
-
+***
 #### Parameters
 
 * **Hidden layer(s):** Two hidden layers in sizes of 100 and 50.
@@ -26,7 +26,7 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 ![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/Training_Loss_vs._Validation_Loss_Basic.png?raw=true)
 
 ### Neural Network With Dropout
-
+***
 #### Parameters
 
 * **Hidden layer(s):** Two hidden layers in sizes of 100 and 50.
@@ -48,7 +48,7 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 
 
 ### Neural Network With Batch Normalization
-
+***
 #### Parameters
 
 * **Hidden layer(s):** Two hidden layers in sizes of 100 and 50.
@@ -69,7 +69,7 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 ![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/Training_Loss_vs._Validation_Loss_Batch_Normalization.png?raw=true)
 
 ### Neural Network With Convolution
-
+***
 #### Parameters
 
 * **Hidden layer(s):** Two hidden layers in sizes of 100 and 50.
@@ -91,7 +91,7 @@ A PyTorch implementation of a Neural Network which classifies an image to one of
 
 
 ### Combined Neural Network
-
+***
 
 #### Parameters
 
