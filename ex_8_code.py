@@ -249,7 +249,7 @@ def main():
     learning_rate = 0.01
 
     train_loader, validation_loader, test_loader = get_data_loaders(batch_size, 0.2)
-    model = BatchNormalizationNeuralNetwork(mnist_image_size, hidden1_size, hidden2_size, mnist_output_size)
+    model = CombinedNeuralNetwork(mnist_image_size, hidden1_size, hidden2_size, mnist_output_size)
     optimizer = optim.Adagrad(model.parameters(), lr=learning_rate)
 
     x = list()

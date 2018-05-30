@@ -106,11 +106,11 @@ Following are five neural network models.
 
 ### Results
 
-* **Training set accuracy:** 68.594%
-* **Validation set accuracy:** 89.254%
-* **Testing set accuracy:** 89.090%
-* **Average training set loss:** 0.472
-* **Average validation set loss:** 0.466
-* **Average loss sum:** 0.918
+* **Training set accuracy:** 68.346%
+* **Validation set accuracy:** 89.594%
+* **Testing set accuracy:** 89.340%
+* **Average training set loss:** 0.934
+* **Average validation set loss:** 0.468
+* **Average loss sum:** 0.483
 
 ![graph](https://github.com/aedeny/machine_learning-ex4/blob/master/graphs/Training_Loss_vs._Validation_Loss_Combined.png?raw=true)
